@@ -44,19 +44,25 @@ export type Database = {
       }
       test: {
         Row: {
-          age: number
+          age: number | null
+          created_at: string
           id: number
           name: string
+          updated_at: string | null
         }
         Insert: {
-          age: number
+          age?: number | null
+          created_at?: string
           id?: number
           name: string
+          updated_at?: string | null
         }
         Update: {
-          age?: number
+          age?: number | null
+          created_at?: string
           id?: number
           name?: string
+          updated_at?: string | null
         }
         Relationships: []
       }

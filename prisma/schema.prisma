@@ -15,9 +15,11 @@ datasource db {
 }
 
 model Test {
-  id   Int    @id @default(autoincrement())
-  name String
-  age  Int
+  id         Int       @id @default(autoincrement())
+  name       String
+  age        Int?
+  created_at DateTime  @default(now()) @db.Timestamptz()
+  updated_at DateTime? @db.Timestamptz()
 
   @@map("test")
 }
