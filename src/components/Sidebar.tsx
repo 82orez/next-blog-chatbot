@@ -6,7 +6,7 @@ import { AiFillGithub, AiFillInstagram, AiOutlineClose } from "react-icons/ai";
 import Link from "next/link";
 
 export default function Sidebar() {
-  const { isOpen, close } = useSidebarStateStore();
+  const { isOpen, toggle } = useSidebarStateStore();
   return (
     <div
       className={clsx("min-h-screen flex-col gap-6 border-r bg-white p-10 pr-6 text-base", {
