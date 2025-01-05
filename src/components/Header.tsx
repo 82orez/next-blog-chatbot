@@ -11,7 +11,7 @@ export default function Header() {
   return (
     <header className="flex h-16 items-center justify-between border-b bg-cyan-100 px-4 lg:h-20 lg:px-10">
       <button className={"text-2xl lg:text-3xl"} onClick={toggle}>
-        {!isOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
+        {isOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
       </button>
       <Link href="/">
         <h1 className="text-3xl font-medium text-slate-600 lg:text-4xl">BLOG</h1>
