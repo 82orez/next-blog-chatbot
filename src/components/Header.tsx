@@ -10,7 +10,7 @@ export default function Header() {
 
   return (
     <header className="flex h-16 items-center justify-between border-b bg-cyan-100 px-4 lg:h-20 lg:px-10">
-      <button className={"text-2xl lg:text-3xl"} onClick={toggle}>
+      <button className={"text-2xl lg:hidden"} onClick={toggle}>
         {isOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
       </button>
       <Link href="/">
