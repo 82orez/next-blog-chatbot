@@ -8,13 +8,7 @@ import Link from "next/link";
 export default function Sidebar() {
   const { isOpen, toggle } = useSidebarStateStore();
   return (
-    <div
-      className={clsx("min-h-screen flex-col gap-6 border-r bg-white p-10 pr-6 text-base", {
-        hidden: !isOpen,
-        flex: isOpen, // isOpen 이 true 일 경우 flex 로 표시
-        "lg:hidden": isOpen,
-        "lg:flex": !isOpen,
-      })}>
+    <div className={clsx("min-h-screen flex-col gap-6 border-r bg-white p-10 pr-6 text-base lg:flex", { hidden: !isOpen, flex: isOpen })}>
       <Link href={"/"} className="w-48 font-medium text-gray-600 hover:underline">
         Home
       </Link>
