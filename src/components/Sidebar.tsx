@@ -18,7 +18,7 @@ export default function Sidebar() {
       <Link href={"/"} className="w-48 font-medium text-gray-600 hover:underline">
         Home
       </Link>
-      <Link href="/" className="w-48 font-medium text-gray-600 hover:underline">
+      <Link href="/tag" className="w-48 font-medium text-gray-600 hover:underline">
         태그
       </Link>
       <Link href={"/"}>카테고리</Link>
