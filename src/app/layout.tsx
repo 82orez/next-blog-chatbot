@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <body className={`${inter.className} antialiased`}>
         <div className={"flex h-screen w-screen text-sm lg:text-base"}>
           <Sidebar />
