@@ -13,7 +13,7 @@ export default function Footer() {
       <div className="flex items-center gap-2 lg:gap-3">
         <div className="pr-1 text-sm lg:pr-2 lg:text-base">ADMIN</div>
         <IconButton Icon={AiOutlineSetting} component={Link} label="adminLink" href="/" className="text-gray-500 hover:text-gray-600" />
-        <IconButton Icon={BsPencilSquare} component={Link} label="writeLink" href="/" className="text-gray-500 hover:text-gray-600" />
+        <IconButton Icon={BsPencilSquare} component={Link} label="writeLink" href="/write" className="text-gray-500 hover:text-gray-600" />
       </div>
     </footer>
   );
