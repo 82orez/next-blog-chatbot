@@ -23,3 +23,16 @@ model Test {
 
   @@map("test")
 }
+
+model Post {
+  id                Int       @id @default(autoincrement())
+  title             String
+  category          String
+  tags              String
+  content           String
+  preview_image_url String?
+  created_at        DateTime  @default(now()) @db.Timestamptz()
+  updated_at        DateTime? @db.Timestamptz()
+
+  @@map("post")
+}

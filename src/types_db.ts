@@ -42,6 +42,39 @@ export type Database = {
         }
         Relationships: []
       }
+      post: {
+        Row: {
+          category: string
+          content: string
+          created_at: string
+          id: number
+          preview_image_url: string | null
+          tags: string
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          category: string
+          content: string
+          created_at?: string
+          id?: number
+          preview_image_url?: string | null
+          tags: string
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          category?: string
+          content?: string
+          created_at?: string
+          id?: number
+          preview_image_url?: string | null
+          tags?: string
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       test: {
         Row: {
           age: number | null
