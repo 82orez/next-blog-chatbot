@@ -9,7 +9,7 @@ import IconButton from "@/components/IconButton";
 export default function Sidebar() {
   const { isOpen, toggle } = useSidebarStateStore();
   return (
-    <div className={clsx("fixed min-h-screen flex-col gap-6 border-r bg-white p-10 pr-6 text-base lg:flex", { hidden: !isOpen, flex: isOpen })}>
+    <div className={clsx("fixed z-50 min-h-screen flex-col gap-6 border-r bg-white p-10 pr-6 text-base lg:flex", { hidden: !isOpen, flex: isOpen })}>
       <button className={"absolute right-5 top-5 text-3xl lg:hidden"} onClick={toggle} data-cy={"sidebarClose"}>
         <AiOutlineClose />
       </button>
