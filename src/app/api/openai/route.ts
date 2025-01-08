@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
-  // "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",
 });
 
 export async function GET(request: Request) {
