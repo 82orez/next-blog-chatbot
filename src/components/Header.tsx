@@ -16,7 +16,7 @@ export default function Header() {
       <Link href="/">
         <h1 className="text-3xl font-medium text-slate-600 lg:text-4xl">BLOG</h1>
       </Link>
-      <Link href={"/"} className={"text-2xl lg:text-3xl"} data-cy="chatbotLink">
+      <Link href={"/search"} className={"text-2xl lg:text-3xl"} data-cy="chatbotLink">
         <BsRobot />
       </Link>
     </header>
