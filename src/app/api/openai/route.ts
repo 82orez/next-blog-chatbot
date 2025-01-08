@@ -13,7 +13,7 @@ export async function GET(request: Request) {
       { role: "system", content: "You are a helpful assistant." },
       {
         role: "user",
-        content: "카레라이스 만드는 법 알려줘.",
+        content: "피자 만드는 법 알려줘.",
       },
     ],
   });
