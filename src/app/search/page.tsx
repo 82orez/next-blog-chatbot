@@ -15,7 +15,7 @@ export default function SearchPage() {
     <div className={""}>
       {/* openai api 로부터 응답을 받기까지 상당 시간이 걸리므로 Loading 과정 추가 */}
       {isOpenAiLoading ? (
-        <div className={"animate-pulse text-8xl"}>답변 생성 중...</div>
+        <div className={"animate-pulse text-6xl"}>답변 생성 중...</div>
       ) : (
         <>
           <input
