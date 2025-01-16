@@ -4,6 +4,7 @@ import { useChat } from "ai/react";
 
 export default function Chat() {
   const { messages, input, isLoading, handleInputChange, handleSubmit } = useChat({ api: "/api/openai" });
+
   return (
     <div className="flex h-full w-full flex-col items-center justify-between">
       <div className="h-full w-full max-w-md rounded-lg bg-white p-6 shadow-md">
