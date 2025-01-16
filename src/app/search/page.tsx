@@ -10,9 +10,12 @@ export default function Chat() {
         <div className="flex h-full flex-col justify-between">
           <div className="overflow-y-auto">
             {messages.map((m) => (
-              <div key={m.id} className="whitespace-pre-wrap">
-                {m.role === "user" ? "User: " : "AI: "}
-                {m.content}
+              <div key={m.id} className="mb-4 whitespace-pre-wrap">
+                {m.role === "user" ? (
+                  <div className={"w-fit max-w-[80%] rounded-md bg-amber-100 p-2"}>{m.content}</div>
+                ) : (
+                  <div className={"ml-auto w-fit max-w-[80%] rounded-md bg-blue-100 p-2"}>{m.content}</div>
+                )}
               </div>
             ))}
           </div>
@@ -26,12 +29,13 @@ export default function Chat() {
               disabled={isLoading}
               value={input}
             />
+
             {isLoading ? (
-              <button className="rounded-r-lg bg-red-500 px-1 text-sm text-white" onClick={stop} type="button">
+              <button className="min-w-fit rounded-r-lg bg-red-500 px-2 text-sm text-white" onClick={stop} type="button">
                 중지
               </button>
             ) : (
-              <button className="rounded-r-lg bg-blue-500 px-1 text-sm text-white" type="submit" disabled={!input.trim()}>
+              <button className="min-w-fit cursor-pointer rounded-r-lg bg-blue-500 px-2 text-sm text-white" type="submit" disabled={!input.trim()}>
                 전송
               </button>
             )}
