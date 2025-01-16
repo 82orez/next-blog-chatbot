@@ -1,46 +1,41 @@
-import OpenAI from "openai";
-import { NextResponse } from "next/server";
+import { openai } from "@ai-sdk/openai";
+import { convertToCoreMessages, streamText } from "ai";
+import { z } from "zod";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// import { weatherSchema, WeatherParams, fetchWeatherData } from '@/base/weather';
 
-// * GET 요청으로 처리하는 부분.
-export async function GET(request: Request) {
-  const completion = await openai.chat.completions.create({
-    model: "gpt-4o-mini",
-    messages: [
-      { role: "system", content: "You are a helpful assistant." },
-      {
-        role: "user",
-        content: "피자 만드는 법 알려줘.",
-      },
-    ],
+// Allow streaming responses up to 30 seconds
+export const maxDuration = 30;
+
+export async function POST(req: Request) {
+  const { messages } = await req.json();
+
+  const result = await streamText({
+    model: openai("gpt-4o-mini"),
+    messages: convertToCoreMessages(messages),
+    // tools: {
+    //   getCurrentWeather: {
+    //     description: 'Get the current weather information for a specific city or region. The user can provide the name of the city and nation, and optionally specify the temperature unit (Celsius or Fahrenheit) and the language for the response.',
+    //     parameters: weatherSchema,
+    //     // execute: async (params: WeatherParams) => {
+    //     //   try {
+    //     //     const weatherData = await fetchWeatherData(params);
+    //     //     console.log(JSON.stringify(weatherData));
+    //     //     return JSON.stringify(weatherData);
+    //     //   } catch (error) {
+    //     //     console.error('Error fetching weather data:', error);
+    //     //     throw new Error('Failed to fetch weather data');
+    //     //   }
+    //     // },
+    //   },
+    //   askForConfirmation: {
+    //     description: 'Ask the user for confirmation.',
+    //     parameters: z.object({
+    //       message: z.string().describe('The message to ask for confirmation.'),
+    //     }),
+    //   },
+    // },
   });
 
-  // * completion.choices[0].message 부분은 openai api 의 공식. 객체(object)를 반환함.
-  console.log(completion.choices[0].message);
-
-  return NextResponse.json(completion.choices[0].message);
-}
-
-// * POST 요청으로 처리하는 부분
-// * 클라이언트 요청의 body 에 질문 내용을 받아와서 openai api 로 전달.
-export async function POST(request: Request) {
-  const { question } = await request.json();
-
-  const completion = await openai.chat.completions.create({
-    model: "gpt-4o-mini",
-    messages: [
-      { role: "system", content: "You are a helpful assistant." },
-      {
-        role: "user",
-        content: `${question}`,
-      },
-    ],
-  });
-
-  console.log(completion.choices[0].message);
-
-  return NextResponse.json(completion.choices[0].message);
+  return result.toDataStreamResponse();
 }
