@@ -16,10 +16,10 @@ export default function Sidebar() {
       <Link href={"/"} className="w-48 font-medium text-gray-600 hover:underline" onClick={toggle}>
         Home
       </Link>
-      <Link href="/tag" className="w-48 font-medium text-gray-600 hover:underline" onClick={toggle}>
+      <Link href={"/tag"} className="w-48 font-medium text-gray-600 hover:underline" onClick={toggle}>
         태그
       </Link>
-      <Link href={"/"} onClick={toggle}>
+      <Link href={"/"} onClick={toggle} className={"hover:underline"}>
         카테고리
       </Link>
 

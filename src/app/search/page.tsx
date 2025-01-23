@@ -1,11 +1,15 @@
 "use client";
 
 import { useChat } from "ai/react";
+import Link from "next/link";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { IoMdSend } from "react-icons/io";
 
 export default function Chat() {
   const { messages, input, isLoading, handleInputChange, handleSubmit } = useChat({ api: "/api/openai" });
 
   return (
+    // h-full 또는 h-screen 으로 높이 조절
     <div className="flex h-full w-full flex-col items-center justify-between">
       <div className="h-full w-full max-w-md rounded-lg bg-white p-6 shadow-md">
         <div className="flex h-full flex-col justify-between">
@@ -24,7 +28,7 @@ export default function Chat() {
 
           <form className="mt-4 flex w-full" onSubmit={handleSubmit}>
             <input
-              className="w-full rounded-l-lg border border-gray-300 p-3 focus:border-blue-300 focus:outline-none focus:ring"
+              className="w-full rounded-l-lg border border-gray-300 p-2 focus:border-blue-300 focus:outline-none focus:ring"
               placeholder="제주도 오늘의 날씨는 어때?"
               onChange={handleInputChange}
               disabled={isLoading}
@@ -33,11 +37,11 @@ export default function Chat() {
 
             {isLoading ? (
               <button className="min-w-fit rounded-r-lg bg-red-500 px-2 text-sm text-white" onClick={stop} type="button">
-                중지
+                <AiOutlineLoading3Quarters className={"animate-spin text-xl"} />
               </button>
             ) : (
               <button className="min-w-fit cursor-pointer rounded-r-lg bg-blue-500 px-2 text-sm text-white" type="submit" disabled={!input.trim()}>
-                전송
+                <IoMdSend className={"text-2xl"} />
               </button>
             )}
           </form>
